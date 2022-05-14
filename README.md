@@ -11,4 +11,4 @@ Contents of the workflow include:
 * `notebooks/01-etl-process.Rmd`: R Markdown document that extracts the Google Spreadsheet, transforms it, and loads it into a pin.
 * `notebooks/02-plot.Rmd`: Notebook that creates a plot from the pinned data.
 * `notebooks/03-plot2.Rmd:` Notebook that creates a second plot from the pinned data.
-* notebooks/04-aggregate.Rmd: Notebook that knits together `-02-plot.Rmd` and `03-plot.Rmd` into a report.
+* `notebooks/04-aggregate.Rmd`: Notebook that knits together `02-plot.Rmd` and `03-plot.Rmd` into a report.
