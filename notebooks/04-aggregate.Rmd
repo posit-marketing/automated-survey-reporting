@@ -1,0 +1,34 @@
+---
+title: "Internet Use Survey Report"
+output:
+  html_document:
+    theme:
+      bootswatch: simplex
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+
+library(pins)
+library(ggplot2)
+library(stringr)
+library(dplyr)
+library(hrbrthemes)
+
+# Connect to board
+board <-
+  board_rsconnect(auth = "envvar")
+
+# Read pinned data
+pinned_dat <-
+  pin_read("survey_data_results",
+           board = board)
+```
+
+Data from the National Telecommunications and Information Administration.
+
+```{r, child=c("02-plot.Rmd")}
+```
+
+```{r, child=c("03-plot2.Rmd")}
+```

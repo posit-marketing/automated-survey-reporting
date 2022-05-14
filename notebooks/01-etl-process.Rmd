@@ -1,0 +1,53 @@
+---
+title: "ETL Process"
+output: html_document
+---
+
+```{r setup}
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(pins)
+
+# Connect to board
+board <-
+  board_rsconnect(
+    server = Sys.getenv("CONNECT_SERVER"),
+    key = Sys.getenv("CONNECT_API_KEY")
+    )
+```
+
+# Extract data
+
+```{r extract}
+survey_dat <- 
+  googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1iIf8vsGSlKmyYSy-FbevOBmi-c0YwI46lLzNbD_RZSQ/edit?usp=sharing")
+```
+```{r, include = FALSE}
+glimpse(survey_dat)
+```
+
+# Transform data
+
+```{r mutate}
+survey_dat_mutate <-
+  survey_dat %>%
+  mutate(date =
+           my(dataset),
+          .before = 1)
+```
+
+```{r transform}
+survey_data_transform <-
+  survey_dat_mutate %>%
+  pivot_longer(cols = usProp:age65pCount,
+               names_to = "variables",
+               values_to = "values")
+```
+
+# Load transformed data in a pin
+
+```{r load}
+board %>%
+  pin_write(survey_data_transform, "survey_data_results", type = "rds")
+```

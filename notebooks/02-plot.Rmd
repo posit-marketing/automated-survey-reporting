@@ -1,0 +1,30 @@
+---
+title: "Plot 1"
+---
+
+```{r, include = FALSE}
+library(tidyverse)
+library(hrbrthemes)
+```
+
+## Percentage by age
+
+-------
+
+### Line Chart
+
+```{r, echo = FALSE}
+p <- pinned_dat %>%
+  filter(variable == "noInternetAtHome",
+         str_detect(variables, "Prop")) %>%
+  ggplot(aes(x = date, y = values, color = variables)) +
+  geom_line(size = 1) +
+  labs(title = "Percentage of respondents with\nno internet at home by age group",
+       xlab = "Date",
+       ylab = "Percentage") +
+  scale_color_ipsum() +
+  theme_ipsum_ps(grid = "XY", axis = "xy")
+
+p
+```
+

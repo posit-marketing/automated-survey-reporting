@@ -1,0 +1,32 @@
+---
+title: "Plot 2"
+---
+
+### Percentage by main reason
+
+-------
+
+*Bar Chart*
+
+```{r, echo = FALSE}
+p <- pinned_dat %>%
+  filter(
+    str_detect(variable, "MainReason"),
+    str_detect(variables, "Prop"),
+    universe == "isHouseholder",
+    dataset == "Nov 2021"
+  ) %>%
+  ggplot(aes(x = variables, y = values, fill = variables)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Percentage With No Internet by Main Reason",
+       subtitle = "November 2021",
+       xlab = "Date",
+       ylab = "Percentage") +
+  facet_wrap( ~ variable) +
+  scale_fill_ipsum() +
+  theme_ipsum_ps(grid = "XY", axis = "xy") +
+  theme(legend.position = "bottom",
+        axis.text.x = element_blank())
+
+p
+```
