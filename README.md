@@ -1,6 +1,6 @@
 # Automated survey reporting with googlesheets4, pins, and R Markdown
 
-Welcome to the automated survey reporting repository. We will walk through this workflow in an upcoming [RStudio Blog](https://www.rstudio.com/blog/) post.
+Welcome to the automated survey reporting repository. We walk through this workflow in an RStudio Blog post, [Automated Survey Reporting With googlesheets4, pins, and R Markdown](https://www.rstudio.com/blog/automated-survey-reporting/).
 
 ![Cycle of ETL, create report, publish report, and refresh data with related packages underneath](cycle.png)
 
